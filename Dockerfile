@@ -1,4 +1,4 @@
-FROM openjdk:8
-EXPOSE 8080
-ADD target/achat.jar achat.jar 
-ENTRYPOINT ["java","-jar","/achat.jar"]
+FROM alpine 
+RUN apk add openjdk11
+EXPOSE 80
+CMD "java"
