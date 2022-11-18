@@ -13,7 +13,7 @@
 	<version>1.0</version>
 	<packaging>pom</packaging>
 	<distributionManagement> <repository> 
-	<id>deployementRepo</id>
+	<id>deploymentRepo</id>
 	
 	<url>http://192.168.0.4:8081/repository/maven-releases/</url>
 	</repository>
