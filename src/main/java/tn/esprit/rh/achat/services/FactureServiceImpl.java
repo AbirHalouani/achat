@@ -112,5 +112,11 @@ public class FactureServiceImpl implements IFactureService {
 		return pourcentage;
 	}
 	
+	
+	public FactureServiceImpl(FactureRepository factureRepository) {
+		super();
+		this.factureRepository = factureRepository;
+	}
+	
 
 }
