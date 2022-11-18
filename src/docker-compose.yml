@@ -1,0 +1,38 @@
+
+#Define services
+services:
+
+  mysql-db:
+    image: mysql:5.6
+    container_name: mysql-db
+    #Environment variable for password and default database
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'achatdb'
+    ports:
+      - target: 3306
+        published: 3306
+        protocol: tcp #Forwars the exposed port 3306 on the container to port 3306 on the host machine
+    volumes:
+      - /home/mysql/data:/home/vagrant/mysql:rw
+  #Back-end Spring Boot Application
+  springboot-app:
+    #The docker file in BE, build the jar and provides the docker image.
+    image: abirhalouani/achat:latest
+    container_name: springboot-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/achatdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      MYSQL_HOST: mysql-db
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: achatdb
+    restart: on-failure
+    #Environment variable for Spring Boot Application.
+    ports:
+      - 8089:8089 #Forwars the exposed port 8080 on the container to port 8080 on the host machine
+    links:
+      - mysql-db
+
