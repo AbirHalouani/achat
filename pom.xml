@@ -11,7 +11,7 @@
 	<groupId>tn.esprit.rh</groupId>
 	<artifactId>achat</artifactId>
 	<version>1.0</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<distributionManagement> <repository> 
 	<id>deploymentRepo</id>
 	
